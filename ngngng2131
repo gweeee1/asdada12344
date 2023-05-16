@@ -1,0 +1,37 @@
+let num;    
+let guess;    
+let tries = 0;  
+
+function guessNumber() {    
+  num = Math.floor(Math.random() * 100) + 1;    
+  guess = parseFloat(prompt("请输入一个 1 到 100 之间的数字:"));    
+  guess = guess.toFixed(2);    
+  if (guess > num) {    
+    alert("太大了!");    
+  } else if (guess < num) {    
+    alert("太小了!");    
+  } else {    
+    alert("恭喜你，猜对了!");    
+    resetGame();    
+  }    
+}  
+
+function resetGame() {    
+  tries = 0;    
+  num = 1;    
+  guess = parseFloat(prompt("请输入一个 1 到 100 之间的数字:"));    
+}  
+
+guessNumber();  
+
+while (tries < 10) {    
+  try {    
+    guessNumber();    
+    guess = parseFloat(prompt("请输入一个 1 到 100 之间的数字:"));    
+    tries++;    
+  } catch (e) {    
+    alert("输入有误，请重新输入。");    
+  }    
+}  
+
+alert("游戏结束，您的得分是:" + tries + "次。");    
